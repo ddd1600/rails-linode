@@ -3,7 +3,7 @@
 # Installs Ruby 1.9.3-p194, and Nginx with Passenger. 
 #
 # <UDF name="db_password" Label="MySQL root password" />
-# <UDF name="deploy_password" Label="Deployment user password" />
+# <UDF name="ddouglas_password" Label="Ddouglas user password" />
 
 NGINX_INSTALL_PATH="/usr/local/nginx"
 NGINX_DAEMON_PATH="/usr/local/nginx/sbin/nginx"
@@ -105,7 +105,7 @@ chmod +x /etc/init.d/nginx
 /usr/sbin/update-rc.d -f nginx defaults
 
 # Add deploy user
-echo "deploy:$DEPLOY_PASSWORD:1000:1000::/home/deploy:/bin/bash" | newusers
-cp -a /etc/skel/.[a-z]* /home/deploy/
-chown -R deploy /home/deploy
-echo "deploy    ALL=(ALL) ALL" >> /etc/sudoers
+echo "ddouglas:$DDOUGLAS_PASSWORD:1000:1000::/home/ddouglas:/bin/bash" | newusers
+cp -a /etc/skel/.[a-z]* /home/ddouglas/
+chown -R ddouglas /home/ddouglas
+echo "ddouglas    ALL=(ALL) ALL" >> /etc/sudoers
